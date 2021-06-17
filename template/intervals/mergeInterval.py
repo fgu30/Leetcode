@@ -20,8 +20,7 @@ def merge(lists):
         res.append([l,r])
     return res
             
-]
-        
+   
     
     
     
