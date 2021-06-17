@@ -23,7 +23,7 @@ or dfs(i,j+1,k+1)
 
 ## 单调栈
 
-先做比较 再入栈。先把
+先做比较 再入栈。
 
 42. Trapping Rain Water
 
