@@ -6,7 +6,7 @@
 if dfs(i-1,j,k+1)\
 or dfs(i+1,j,k+1)\
 or dfs(i,j-1,k+1)\
-or dfs(i,j+1,k+1) == True:
+or dfs(i,j+1,k+1) == True:Cancel changes
     return True
 ```
 
@@ -25,7 +25,7 @@ or dfs(i,j+1,k+1)
 
 先做比较 再入栈。
 
-42. Trapping Rain Water
+[42.接雨水](https://github.com/fgu30/Leetcode/tree/main/42.%20Trapping%20Rain%20Water)
 
 ```python
    class Solution:
