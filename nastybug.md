@@ -1,6 +1,6 @@
 ## DFS
 
-72
+[79.Word Search](https://leetcode-cn.com/problems/word-search/)
 
 ```python
 if dfs(i-1,j,k+1)\
@@ -25,7 +25,7 @@ or dfs(i,j+1,k+1)
 
 先做比较 再入栈。
 
-42. Trapping Rain Water
+[42. Trapping Rain Water](https://leetcode-cn.com/problems/trapping-rain-water/)
 
 ```python
    class Solution:
