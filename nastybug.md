@@ -1,12 +1,16 @@
 ## DFS
 
+<<<<<<< HEAD
 [79.Word Search](https://leetcode-cn.com/problems/word-search/)
+=======
+[79. Word Search](https://leetcode-cn.com/problems/word-search/)
+>>>>>>> 5bddc1c87ab8fca7393d9965f4d4fa14fe8a1e20
 
 ```python
 if dfs(i-1,j,k+1)\
 or dfs(i+1,j,k+1)\
 or dfs(i,j-1,k+1)\
-or dfs(i,j+1,k+1) == True:
+or dfs(i,j+1,k+1) == True:Cancel changes
     return True
 ```
 
@@ -25,7 +29,11 @@ or dfs(i,j+1,k+1)
 
 先做比较 再入栈。
 
+<<<<<<< HEAD
 [42. Trapping Rain Water](https://leetcode-cn.com/problems/trapping-rain-water/)
+=======
+[42.接雨水](https://github.com/fgu30/Leetcode/tree/main/42.%20Trapping%20Rain%20Water)
+>>>>>>> 5bddc1c87ab8fca7393d9965f4d4fa14fe8a1e20
 
 ```python
    class Solution:
