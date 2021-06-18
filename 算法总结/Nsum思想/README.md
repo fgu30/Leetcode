@@ -1,8 +1,8 @@
-[1. Two Sum](https://leetcode-cn.com/problems/two-sum/)
-[15. 3Sum](https://leetcode-cn.com/problems/3sum/)
-[16. 3Sum Closest](https://leetcode-cn.com/problems/3sum-closest/)
-[18. 4Sum](https://leetcode-cn.com/problems/3sum/)
-[259. 3Sum Smaller](https://leetcode-cn.com/problems/3sum/)
+- [1. Two Sum](https://leetcode-cn.com/problems/two-sum/)
+- [15. 3Sum](https://leetcode-cn.com/problems/3sum/)
+- [16. 3Sum Closest](https://leetcode-cn.com/problems/3sum-closest/)
+- [18. 4Sum](https://leetcode-cn.com/problems/3sum/)
+- [259. 3Sum Smaller](https://leetcode-cn.com/problems/3sum/)
 
 ##关键点
 
