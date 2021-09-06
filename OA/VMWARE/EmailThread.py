@@ -39,7 +39,7 @@ def emailThreads(strs):
         if '---' not in content:
         # this is a new thread
             tids += 1
-            msgs[tuple(lst)] = [tids, 1]
+            msgs[tuple(lst)] = [tids,、》： 1]
             output.append([tids,1])
         else:
             msg = content.split('---')
