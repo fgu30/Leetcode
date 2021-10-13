@@ -1,2 +1,4 @@
-a = '0'
-print(ord(a))
+a = set()
+a.add(1)
+a.add(2)
+print(a.pop(2))

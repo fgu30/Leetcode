@@ -86,4 +86,117 @@ transition_graph(logs2) # =>
 'resource_3': {'resource_3: 0.857, 'END': 0.143}
 }
 '''
-https://leetcode.com/discuss/interview-question/1144222/karat-interview-for-robinhood-swe
+# https://leetcode.com/discuss/interview-question/1144222/karat-interview-for-robinhood-swe
+
+from collections import defaultdict
+from typing import DefaultDict
+
+
+def solveOne(logs):
+    ans = dict()
+    for time,id,resource in logs:
+        time = int(time)
+        if id not in ans:
+            ans[id] = [time,time]
+        else:
+            if time < ans[id][0]:
+                ans[id][0] = time
+            elif time > ans[id][1]:
+                ans[id][1] = time 
+    return ans
+    
+import heapq as hq
+
+def solveTwo(logs):
+    resourceMap = defaultdict(list)
+    res = 0
+    resName = ''
+    logs.sort(key=lambda w:(w[2],w[0]))
+    for time,id,resource in logs:
+        time = int(time)
+        while resourceMap[resource] and time - resourceMap[resource][0] > 300:
+            hq.heappop(resourceMap[resource])
+        
+        hq.heappush(resourceMap[resource],time)
+        if len(resourceMap[resource]) > res:
+            resName = resource
+            res = len(resourceMap[resource])
+    return resName,res 
+        
+        
+                    
+    
+
+def build_transition_graph(logs):
+    
+    user_dict = {}
+    res_dict = {}
+    # Sort the logs by usr and then by ts. use int() since it is string and sorting wont work well with string
+    logs.sort(key=lambda x: (x[1], int(x[0])))
+
+    # Fill in the user dict, adding start and end for transitions
+    for ts, usr, res in logs:
+        if usr not in user_dict:
+            user_dict[usr] = ['START']
+        user_dict[usr].append(res)
+
+    for usr in user_dict:
+        user_dict[usr].append('END')
+
+    # Iterate through the user dict and set counts per transition, keeping track of total users per resource
+    for usr in user_dict:
+        for i in range(1, len(user_dict[usr])):
+            prev_res, cur_res = user_dict[usr][i-1], user_dict[usr][i]
+            if prev_res not in res_dict:
+                res_dict[prev_res] = {'total': 0}
+            if cur_res not in res_dict[prev_res]:
+                res_dict[prev_res][cur_res] = 0
+            res_dict[prev_res][cur_res] += 1
+            res_dict[prev_res]['total'] += 1
+
+    # Fill the transition graph with resources and their probabilities
+    transition_graph = {}
+    for res in res_dict:
+        transition_graph[res] = {}
+        for nex_res in res_dict[res]:
+            if nex_res == 'total':
+                continue
+            prob = res_dict[res][nex_res]/res_dict[res]['total']
+            transition_graph[res][nex_res] = prob
+    return transition_graph
+
+if __name__ == '__main__':
+    logs1 = [
+    ["58523", "user_1", "resource_1"],
+    ["62314", "user_2", "resource_2"],
+    ["54001", "user_1", "resource_3"],
+    ["200", "user_6", "resource_5"],
+    ["215", "user_6", "resource_4"],
+    ["54060", "user_2", "resource_3"],
+    ["53760", "user_3", "resource_3"],
+    ["58522", "user_22", "resource_1"],
+    ["53651", "user_5", "resource_3"],
+    ["2", "user_6", "resource_1"],
+    ["100", "user_6", "resource_6"],
+    ["400", "user_7", "resource_2"],
+    ["100", "user_8", "resource_6"],
+    ["54359", "user_1", "resource_3"],
+    ]
+
+
+    logs2 = [
+    ["300", "user_1", "resource_3"],
+    ["599", "user_1", "resource_3"],
+    ["900", "user_1", "resource_3"],
+    ["1199", "user_1", "resource_3"],
+    ["1200", "user_1", "resource_3"],
+    ["1201", "user_1", "resource_3"],
+    ["1202", "user_1", "resource_3"]
+    ]
+    
+    print(build_transition_graph(logs1))
+    # print("x"*100)
+    # print(build_transition_graph(logs2))
+    # print("x"*100)
+    # print(solveTwo(logs1))
+    
